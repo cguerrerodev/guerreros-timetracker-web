@@ -12,6 +12,20 @@ const workSessionReducer = (state = initState, action) => {
                 workSession:action.payload
             }
         
+        case 'CANCEL_WORK_SESSION':
+            
+            return{
+                ...state,
+                workSession:action.payload
+            }
+
+        case 'END_WORK_SESSION':
+        
+            return{
+                ...state,
+                workSession:action.payload
+            }
+               
         default:
 
             return state;

@@ -11,7 +11,7 @@ class TagSelect extends Component {
 
     handleChange = (event) => {
 
-        if (event.target.id === "tagSelect"){
+        if (event.target.id === "TagSelect.tagSelect"){
 
             this.props.selectTag(event.target.value);
 
@@ -44,14 +44,14 @@ class TagSelect extends Component {
             <div >
 
                 <div>
-                    <label htmlFor="tagSelect">Task</label>
+                    <label htmlFor="TagSelect.tagSelect">Task</label>
 
-                    <select id = "tagSelect" onChange = {this.handleChange}
+                    <select id = "TagSelect.tagSelect" onChange = {this.handleChange}
                         defaultValue = {this.props.item?this.props.tag.id:""} 
                         placeholder="Tag"
                         className = "form-control" >
 
-                        <option value = {0} key = {0} >Select...</option>
+                        <option value = {""} key = {0} >Select...</option>
                         {
                             options
                         }
