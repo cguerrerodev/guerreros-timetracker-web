@@ -6,10 +6,9 @@ This in a personal web applcation creted to keep track of what the user does dur
 ## How to run the app
 
 1. Either fork or download the app and open the folder in your IDE.
-
-
-
-5. The app will be served at http://localhost:3000/
+2. Install all dependencies using the npm i command
+3. Start the web server using the npm start local command
+4. The app will be served at http://localhost:3000/
 
 ## Used technologies
 
@@ -18,4 +17,4 @@ Redux
 
 ## Dependencies
 
-guerreros-timetracker-web
+guerreros-timetracker-api
