@@ -12,8 +12,13 @@ This in a personal web applcation creted to keep track of what the user does dur
 
 ## Used technologies
 
-React.js
-Redux
+1. React.js
+2. React Bootstrap
+3. React Router
+4. React Google Login
+5. Redux
+6. Redux Thunk
+7. Axios
 
 ## Dependencies
 
