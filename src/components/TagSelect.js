@@ -41,10 +41,10 @@ class TagSelect extends Component {
 
         return (
 
-            <div >
+            <div className="card text-white bg-primary mb-3" >
 
-                <div>
-                    <label htmlFor="TagSelect.tagSelect">Task</label>
+                <div className="card-header">Task</div>
+                <div className="card-body">
 
                     <select id = "TagSelect.tagSelect" onChange = {this.handleChange}
                         defaultValue = {this.props.item?this.props.tag.id:""} 
@@ -57,6 +57,7 @@ class TagSelect extends Component {
                         }
                     </select>
                 </div>
+
 
             </div>
 
