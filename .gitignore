@@ -21,3 +21,11 @@ node_modules
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+.classpath
+.project
+.settings/
+guerreros-timetracker-api/bin/
+guerreros-timetracker-api/target/
+
+
