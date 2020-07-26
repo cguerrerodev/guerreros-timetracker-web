@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import Clock from './Clock';
 import TagSelect from './TagSelect';
+import WorkSessionReport from './WorkSessionReport';
 import {connect} from 'react-redux';
 import {Redirect} from 'react-router-dom';
 
@@ -11,13 +12,14 @@ class Pomodoro extends Component {
 
         return (
 
-            this.props.user ?
+ //           this.props.user ?
             (<div className="containter">
                 <Clock />
                 <TagSelect />
+                <WorkSessionReport />
             </div>)
-            :
-            <Redirect to='/' />
+ //           :
+ //           <Redirect to='/' />
         );
 
     }

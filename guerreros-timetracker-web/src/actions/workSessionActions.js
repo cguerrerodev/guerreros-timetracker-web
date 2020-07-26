@@ -70,3 +70,28 @@ export function endWorkSession(){
     }
 
 }
+
+export function fetchWorkSessionReport(){
+
+    return (dispatch)=>{
+
+        return axios.get
+        ('http://localhost:8080/users/SYSTEM/worksessions/report?from=2020-01-01&to=2020-08-30', {
+            method: 'GET',
+            headers: {
+              'content-type': 'application/json',
+            }
+          }
+        )
+    
+        .then(response => 
+            dispatch(
+            {   
+                type : 'GET_WORKSESSION_REPORT',
+                payload : response.data   
+            }
+            )
+        )
+    }
+
+}

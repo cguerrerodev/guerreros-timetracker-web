@@ -25,6 +25,14 @@ const workSessionReducer = (state = initState, action) => {
                 ...state,
                 workSession:action.payload
             }
+            
+        case 'GET_WORKSESSION_REPORT':
+    
+            return{
+                ...state,
+                todaysWorkSessionReport:action.payload
+            }    
+
                
         default:
 
