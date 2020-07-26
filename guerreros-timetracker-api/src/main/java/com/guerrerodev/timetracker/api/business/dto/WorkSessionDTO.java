@@ -1,8 +1,6 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.service.dto;
+package com.guerrerodev.timetracker.api.business.dto;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 public class WorkSessionDTO {
 	

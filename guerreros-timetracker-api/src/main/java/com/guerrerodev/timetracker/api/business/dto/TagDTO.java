@@ -1,4 +1,4 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.service.dto;
+package com.guerrerodev.timetracker.api.business.dto;
 
 import java.io.Serializable;
 

@@ -1,7 +1,7 @@
 package com.guerrerodev.timetracker.api.persistence.repository;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Set;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
@@ -13,6 +13,9 @@ public interface WorkSessionRepository extends CrudRepository<WorkSessionEntity,
 
 	WorkSessionEntity findByUserNameAndStatusName(String userName, String statusName);
 	
-	List <WorkSessionEntity> findWorkSessionsByUserNameAndStartTime(String userName, LocalDate from);
+	//List <WorkSessionEntity> findWorkSessionsByUserNameAndStartTime(String userName, LocalDate from);
+
+	Set<WorkSessionEntity> findWorkSessionsByUserNameAndStartTimeBetween(String userName, LocalDate from,
+			LocalDate to);
 	
 }

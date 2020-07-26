@@ -1,4 +1,4 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.entity;
+package com.guerrerodev.timetracker.api.persistence.entity;
 
 import java.time.LocalDateTime;
 
@@ -18,14 +18,13 @@ import javax.persistence.NamedNativeQuery;
 			resultClass=WorkSessionEntity.class),
 	
 	@NamedNativeQuery(
-			name = "WorkSessionEntity.findWorkSessionsByUserNameAndStartTime",
+			name = "WorkSessionEntity.findWorkSessionsByUserNameAndStartTimeBetween",
 			query = "SELECT b.* FROM gstt_user a " + 
 					"LEFT OUTER JOIN gstt_worksession b on a.id = b.user_id " + 
 					"LEFT OUTER JOIN gstt_tag c on b.tag_id = c.id " + 
 					"WHERE " + 
 					"a.name = ? and " + 
-					"b.start_time BETWEEN ? and ? " + 
-					"GROUP by b.tag_id",
+					"b.start_time BETWEEN ? and ? ",
 			resultClass=WorkSessionEntity.class)
 })
 

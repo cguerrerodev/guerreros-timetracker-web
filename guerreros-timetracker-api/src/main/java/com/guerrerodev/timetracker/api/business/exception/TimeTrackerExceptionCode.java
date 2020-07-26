@@ -1,4 +1,4 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.service.exception;
+package com.guerrerodev.timetracker.api.business.exception;
 
 public enum TimeTrackerExceptionCode {
 	

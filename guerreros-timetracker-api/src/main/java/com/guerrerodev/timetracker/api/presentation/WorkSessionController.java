@@ -1,11 +1,13 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.web;
+package com.guerrerodev.timetracker.api.presentation;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -13,9 +15,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.guerrerodev.timetracker.guerrerostimetrackerapi.service.dto.WorkSessionDTO;
-import com.guerrerodev.timetracker.guerrerostimetrackerapi.service.exception.TimeTrackerException;
-import com.guerrerodev.timetracker.guerrerostimetrackerapi.service.manager.WorkSessionManager;
+import com.guerrerodev.timetracker.api.business.dto.WorkSessionDTO;
+import com.guerrerodev.timetracker.api.business.dto.WorkSessionsReportDTO;
+import com.guerrerodev.timetracker.api.business.exception.TimeTrackerException;
+import com.guerrerodev.timetracker.api.business.manager.WorkSessionManager;
 
 @RestController
 @CrossOrigin("*")
@@ -23,14 +26,14 @@ public class WorkSessionController {
 	
 	@Autowired
 	WorkSessionManager workSessionManager;
-
-	@PostMapping(path = "/users/{userName}/tags/worksession")
-	public Map <String, Integer> getNumberOfSessionByDay(
+	
+	@GetMapping(path = "/users/{userName}/worksessions/report", produces = MediaType.APPLICATION_JSON_VALUE)
+	public WorkSessionsReportDTO getWorkSessionsReport(
 			@PathVariable String userName,
-			@RequestParam LocalDate from,
-			@RequestParam LocalDate to) {
+			@RequestParam("from") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate from,
+			@RequestParam("to") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate to) {
 		
-		return workSessionManager.getNumberOfSession(userName, from, to);
+		return workSessionManager.getWorkSessionsReport(userName, from, to);
 	}
 	
 	@PostMapping(path = "/users/{userName}/tags/{tagName}/worksession")

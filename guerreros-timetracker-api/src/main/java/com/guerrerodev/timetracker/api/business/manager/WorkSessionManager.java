@@ -1,11 +1,12 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.service.manager;
+package com.guerrerodev.timetracker.api.business.manager;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Map;
 
-import com.guerrerodev.timetracker.guerrerostimetrackerapi.service.dto.WorkSessionDTO;
-import com.guerrerodev.timetracker.guerrerostimetrackerapi.service.exception.TimeTrackerException;
+import com.guerrerodev.timetracker.api.business.dto.WorkSessionDTO;
+import com.guerrerodev.timetracker.api.business.dto.WorkSessionsReportDTO;
+import com.guerrerodev.timetracker.api.business.exception.TimeTrackerException;
 
 public interface WorkSessionManager {
 
@@ -17,5 +18,7 @@ public interface WorkSessionManager {
 
 	void endWorkSession(String userName, LocalDateTime endTime) throws TimeTrackerException;
 	
-	Map<String, Integer> getNumberOfSession(String userName, LocalDate from, LocalDate to);
+	WorkSessionsReportDTO getWorkSessionsReport(String userName, LocalDate from, LocalDate to);
+	
+//	Map<String, Integer> getNumberOfSession(String userName, LocalDate from, LocalDate to);
 }

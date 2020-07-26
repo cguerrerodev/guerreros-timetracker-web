@@ -1,4 +1,4 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.entity;
+package com.guerrerodev.timetracker.api.persistence.entity;
 
 import java.util.List;
 
@@ -25,7 +25,7 @@ import javax.persistence.Table;
 public class TagEntity {
 
 	@Id
-	private int id;
+	private long id;
 	
 	private String name;
 	
@@ -43,11 +43,13 @@ public class TagEntity {
     )
 	private List<UserEntity> users;
 	
-	public int getId() {
+
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

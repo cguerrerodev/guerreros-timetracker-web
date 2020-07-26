@@ -1,4 +1,4 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.entity;
+package com.guerrerodev.timetracker.api.persistence.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

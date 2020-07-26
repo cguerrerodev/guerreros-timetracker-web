@@ -1,4 +1,4 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.web;
+package com.guerrerodev.timetracker.api.presentation;
 
 import java.util.Set;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.guerrerodev.timetracker.guerrerostimetrackerapi.service.dto.TagDTO;
-import com.guerrerodev.timetracker.guerrerostimetrackerapi.service.manager.TagManager;
+import com.guerrerodev.timetracker.api.business.dto.TagDTO;
+import com.guerrerodev.timetracker.api.business.manager.TagManager;
 
 
 @RestController

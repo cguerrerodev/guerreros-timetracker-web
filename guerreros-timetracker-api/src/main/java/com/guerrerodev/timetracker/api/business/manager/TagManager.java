@@ -1,8 +1,8 @@
-package com.guerrerodev.timetracker.guerrerostimetrackerapi.service.manager;
+package com.guerrerodev.timetracker.api.business.manager;
 
 import java.util.Set;
 
-import com.guerrerodev.timetracker.guerrerostimetrackerapi.service.dto.TagDTO;
+import com.guerrerodev.timetracker.api.business.dto.TagDTO;
 
 public interface TagManager {
 
