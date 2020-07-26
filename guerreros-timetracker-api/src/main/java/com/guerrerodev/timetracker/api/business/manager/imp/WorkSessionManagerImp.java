@@ -215,12 +215,6 @@ public class WorkSessionManagerImp implements WorkSessionManager{
 	
 	}
 	
-	@Override
-	public int getMinutesByUserAndTag(String userName, String tagName) throws TimeTrackerException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
 	
 	@Override
 	public WorkSessionsReportDTO getWorkSessionsReport(String userName, LocalDate from, LocalDate to) {
@@ -337,6 +331,13 @@ public class WorkSessionManagerImp implements WorkSessionManager{
 		result.setFrom(from);
 		result.setTo(to);		
 		result.setTagWorkSessions(tagWorkSessionsMap);
+		
+		tagWorkSessionsMap.forEach((key, workSessionByTagDTO) -> {
+			result.setTotalWorkSessions(
+					result.getTotalWorkSessions() + workSessionByTagDTO.getTotalWorkSessions()
+					);
+		}); 
+		
 		calculateWorkSessionsReportTotalMinutes(result);
 		
 		return result;

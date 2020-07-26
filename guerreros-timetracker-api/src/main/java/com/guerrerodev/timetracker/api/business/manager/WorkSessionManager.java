@@ -10,7 +10,6 @@ import com.guerrerodev.timetracker.api.business.exception.TimeTrackerException;
 
 public interface WorkSessionManager {
 
-	int getMinutesByUserAndTag(String userName, String tagName) throws TimeTrackerException;
 	
 	WorkSessionDTO createWorkSession(WorkSessionDTO workSessionDTO) throws TimeTrackerException;
 
@@ -20,5 +19,5 @@ public interface WorkSessionManager {
 	
 	WorkSessionsReportDTO getWorkSessionsReport(String userName, LocalDate from, LocalDate to);
 	
-//	Map<String, Integer> getNumberOfSession(String userName, LocalDate from, LocalDate to);
+
 }

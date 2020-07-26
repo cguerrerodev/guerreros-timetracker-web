@@ -50,6 +50,24 @@ class WorkSessionReport extends Component {
                 <tbody>
                     {rows}
                 </tbody>
+                <tr class="table-primary">
+      
+                    <td>Total</td>
+                    <td>
+                        {
+                            this.props.todaysWorkSessionReport ? 
+                                this.props.todaysWorkSessionReport.totalWorkSessions
+                                : " - " 
+                        }
+                    </td>
+                    <td>
+                        {
+                            this.props.todaysWorkSessionReport ? 
+                                this.props.todaysWorkSessionReport.totalMinutes
+                                : " - " 
+                        }
+                    </td>
+                 </tr>
             </table>
 
         </div>
