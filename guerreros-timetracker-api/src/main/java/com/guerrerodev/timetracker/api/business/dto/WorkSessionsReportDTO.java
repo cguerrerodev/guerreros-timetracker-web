@@ -12,7 +12,7 @@ public class WorkSessionsReportDTO {
 	
 	private int totalWorkSessions;
 	
-	private int totalMinutes;
+	private long totalMinutes;
 	
 	private Map<String, WorkSessionsByTagDTO> tagWorkSessions;
 
@@ -33,11 +33,11 @@ public class WorkSessionsReportDTO {
 		this.totalWorkSessions = totalWorkSessions;
 	}
 
-	public int getTotalMinutes() {
+	public long getTotalMinutes() {
 		return totalMinutes;
 	}
 
-	public void setTotalMinutes(int totalMinutes) {
+	public void setTotalMinutes(long totalMinutes) {
 		this.totalMinutes = totalMinutes;
 	}
 

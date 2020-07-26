@@ -8,7 +8,7 @@ public class WorkSessionsByTagDTO {
 		
 	private int totalWorkSessions;
 	
-	private int totalMinutes;
+	private long totalMinutes;
 
 	private TagDTO tagDto;
 	
@@ -43,11 +43,11 @@ public class WorkSessionsByTagDTO {
 		this.totalWorkSessions = totalWorkSessions;
 	}
 
-	public int getTotalMinutes() {
+	public long getTotalMinutes() {
 		return totalMinutes;
 	}
 
-	public void setTotalMinutes(int totalMinutes) {
+	public void setTotalMinutes(long totalMinutes) {
 		this.totalMinutes = totalMinutes;
 	}
 

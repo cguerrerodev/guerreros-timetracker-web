@@ -230,9 +230,31 @@ public class WorkSessionManagerImp implements WorkSessionManager{
 		
 		Set<WorkSessionEntity> workSessionEntities = 
 				workSessionRepository.findWorkSessionsByUserNameAndStartTimeBetween(userName, from, to);
-		
 			
 		
+		Map<String, WorkSessionsByTagDTO> tagWorkSessionsMap = createTagWorkSessionMap(modelMapper,
+				workSessionEntities);
+		
+		WorkSessionsReportDTO result = createWorkSessionReport(from, to, tagWorkSessionsMap);
+		
+		return result;
+	}
+
+
+	private void calculateWorkSessionsReportTotalMinutes(WorkSessionsReportDTO result) {
+		result.getTagWorkSessions().forEach((key, workSessionByTagDTO) -> {
+			
+			result.setTotalMinutes(
+					
+					result.getTotalMinutes() + workSessionByTagDTO.getTotalMinutes()
+					
+					);
+		});
+	}
+
+
+	private Map<String, WorkSessionsByTagDTO> createTagWorkSessionMap(ModelMapper modelMapper,
+			Set<WorkSessionEntity> workSessionEntities) {
 		Map<String,WorkSessionsByTagDTO> tagWorkSessionsMap = new HashMap<>();
 		
 		workSessionEntities.forEach(workSessionEntity -> {
@@ -252,9 +274,7 @@ public class WorkSessionManagerImp implements WorkSessionManager{
 						
 			if ( workSessionsByTagDTO == null) {
 																	
-				workSessionsByTagDTO = new WorkSessionsByTagDTO();
-				workSessionsByTagDTO.setTagDto(tagDTO);
-				workSessionsByTagDTO.setWorkSessions(new HashSet<>());
+				workSessionsByTagDTO = createWorkSessionsByTagDTO(tagDTO);
 								
 				tagWorkSessionsMap.put(tagDTO.getName(), workSessionsByTagDTO);
 			} 
@@ -265,18 +285,60 @@ public class WorkSessionManagerImp implements WorkSessionManager{
 		});
 		
 		
-		WorkSessionsReportDTO result = createWorkSessionReport(from, to, tagWorkSessionsMap);
+		tagWorkSessionsMap.forEach((key, workSessionByTagDTO) -> {
+			
+			workSessionByTagDTO.setTotalWorkSessions(
+					(int)workSessionByTagDTO.getWorkSessions().stream().count()
+			);
+			
+		} );
 		
-		return result;
+		
+		tagWorkSessionsMap.forEach((key, workSessionByTagDTO) -> {
+									
+			calculateTotalMinutesWorkSessionsByTag(workSessionByTagDTO);
+			
+			
+		});
+		
+		
+		return tagWorkSessionsMap;
+	}
+
+
+	private void calculateTotalMinutesWorkSessionsByTag(WorkSessionsByTagDTO workSessionByTagDTO) {
+		
+		workSessionByTagDTO.setTotalMinutes(0);
+		
+		workSessionByTagDTO.getWorkSessions().forEach(workSessionDTO -> {
+		
+			workSessionByTagDTO.setTotalMinutes(
+					workSessionByTagDTO.getTotalMinutes() + workSessionDTO.getMinutes()
+					);			
+		});
+		
+		
+	}
+
+
+	private WorkSessionsByTagDTO createWorkSessionsByTagDTO(TagDTO tagDTO) {
+		WorkSessionsByTagDTO workSessionsByTagDTO;
+		workSessionsByTagDTO = new WorkSessionsByTagDTO();
+		workSessionsByTagDTO.setTagDto(tagDTO);
+		workSessionsByTagDTO.setWorkSessions(new HashSet<>());
+		return workSessionsByTagDTO;
 	}
 
 
 	private WorkSessionsReportDTO createWorkSessionReport(LocalDate from, LocalDate to,
 			Map<String, WorkSessionsByTagDTO> tagWorkSessionsMap) {
+		
 		WorkSessionsReportDTO result = new WorkSessionsReportDTO();
 		result.setFrom(from);
 		result.setTo(to);		
 		result.setTagWorkSessions(tagWorkSessionsMap);
+		calculateWorkSessionsReportTotalMinutes(result);
+		
 		return result;
 	}
 }
