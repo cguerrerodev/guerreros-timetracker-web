@@ -137,9 +137,8 @@ class Clock extends Component {
       return (
         <div className="jumbotron">
           <div>
-            <h1 class="display-3">{this.state.clockValue}</h1>
+            <h1 className="display-3">{this.state.clockValue}</h1>
           </div>
-          <br />
           <div>
             <button id = "Clock.startWorkSessionBotton"   
               onClick = {this.startWorkSession} className="btn btn-outline-primary">
@@ -150,12 +149,9 @@ class Clock extends Component {
               className="btn btn-outline-primary"  style={{display: "none"}} >
                 Cancel
             </button>
-          </div>
-          <hr />
-          <div>
             <p id="Clock.statusText" className="text-left">Ready to start</p>
           </div>
-
+ 
           <Modal
             size="sm"
             aria-labelledby="contained-modal-title-vcenter"

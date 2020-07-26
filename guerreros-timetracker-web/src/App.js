@@ -10,6 +10,7 @@ function App() {
   return (
     <div className="App" style={{height: "100%"}}> 
       <NavBar />
+      <hr />
       <BrowserRouter>
         <Route path="/" exact component={Login} />
         <Route path="/pomodoro" exact component={Pomodoro} />

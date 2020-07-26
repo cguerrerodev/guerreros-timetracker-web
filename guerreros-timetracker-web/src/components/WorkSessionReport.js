@@ -10,6 +10,20 @@ class WorkSessionReport extends Component {
     }
 
 
+    getUserInformation = ()=>{
+        if (this.props.user) {
+            return(
+                <div className = "float-right row">
+                    <h5>{this.props.user.name}</h5>&nbsp;&nbsp;&nbsp;
+                    <img  src={this.props.user.imageUrl} width="30" height="30" />   
+                </div> 
+            )
+        } 
+        
+        return null;
+    }
+
+
  
 
     render(){
@@ -38,39 +52,51 @@ class WorkSessionReport extends Component {
 
         return (
 
-            <div className = "table-responsive">
-            <table className = "table table-striped table-hover">
-                <thead >
-                    <tr>                           
-                        <th>Task</th>
-                        <th>Work Sessions</th>
-                        <th>Time</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rows}
-                </tbody>
-                <tr class="table-primary">
-      
-                    <td>Total</td>
-                    <td>
-                        {
-                            this.props.todaysWorkSessionReport ? 
-                                this.props.todaysWorkSessionReport.totalWorkSessions
-                                : " - " 
-                        }
-                    </td>
-                    <td>
-                        {
-                            this.props.todaysWorkSessionReport ? 
-                                this.props.todaysWorkSessionReport.totalMinutes
-                                : " - " 
-                        }
-                    </td>
-                 </tr>
-            </table>
+            <div className="card text-white bg-primary mb-3" >
 
-        </div>
+            <div className="card-header">
+                {this.getUserInformation()}
+            </div>
+            <div className="card-body">
+
+                <div className = "table-responsive">
+                <table className = "table table-striped table-hover">
+                    <thead >
+                        <tr>                           
+                            <th>Task</th>
+                            <th>Work Sessions</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                    <tr class="table-primary">
+        
+                        <td>Total</td>
+                        <td>
+                            {
+                                this.props.todaysWorkSessionReport ? 
+                                    this.props.todaysWorkSessionReport.totalWorkSessions
+                                    : " - " 
+                            }
+                        </td>
+                        <td>
+                            {
+                                this.props.todaysWorkSessionReport ? 
+                                    this.props.todaysWorkSessionReport.totalMinutes
+                                    : " - " 
+                            }
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+            </div>
+
+
+</div>
 
         )
     }
@@ -87,7 +113,10 @@ const mapDispatchToProps = (dispatch) => {
 
 
 const mapStateToProps = (state) => {
-    return {todaysWorkSessionReport : state.workSession.todaysWorkSessionReport}
+    return {
+        todaysWorkSessionReport : state.workSession.todaysWorkSessionReport,
+        user : state.user.user
+    }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(WorkSessionReport);

@@ -43,7 +43,6 @@ class TagSelect extends Component {
 
             <div className="card text-white bg-primary mb-3" >
 
-                <div className="card-header">Task</div>
                 <div className="card-body">
 
                     <select id = "TagSelect.tagSelect" onChange = {this.handleChange}
@@ -51,7 +50,7 @@ class TagSelect extends Component {
                         placeholder="Tag"
                         className = "form-control" >
 
-                        <option value = {""} key = {0} >Select...</option>
+                        <option value = {""} key = {0} >Please, Select a task...</option>
                         {
                             options
                         }
