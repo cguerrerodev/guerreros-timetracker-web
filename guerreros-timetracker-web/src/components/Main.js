@@ -3,10 +3,10 @@ import React, { Component } from 'react';
 import Clock from './Clock';
 import TagSelect from './TagSelect';
 import WorkSessionReport from './WorkSessionReport';
+import NavBar from './NavBar';
 import {connect} from 'react-redux';
-import {Redirect} from 'react-router-dom';
 
-class Pomodoro extends Component {
+class Main extends Component {
 
     render(){
 
@@ -14,9 +14,11 @@ class Pomodoro extends Component {
 
  //           this.props.user ?
             (<div className="containter">
-                <Clock />
-                <TagSelect />
-                <WorkSessionReport />
+                    <NavBar />
+                    <hr />
+                    <Clock />
+                    <TagSelect />
+                    <WorkSessionReport />
             </div>)
  //           :
  //           <Redirect to='/' />
@@ -30,4 +32,4 @@ const mapStateToProps = (state) => {
     return {user : state.user.user}
 }
 
-export default connect(mapStateToProps)(Pomodoro);
+export default connect(mapStateToProps)(Main);
